@@ -8,3 +8,4 @@ export const MESSAGES_PER_PAGE = 50;
 export const QUERY_RETRY_COUNT = 1;
 export const QUERY_STALE_TIME_MS = 0;
 export const QUERY_GC_TIME_MS = 1000 * 60 * 5; // 5 minutes
+export const BOTTOM_THRESHOLD_PX = 100;
