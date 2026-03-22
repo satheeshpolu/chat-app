@@ -1,5 +1,5 @@
-import { API_BASE_URL, AUTH_TOKEN, MESSAGES_PER_PAGE } from "../../constants";
-import type { ApiMessage } from "../../types/chat.types";
+import { API_BASE_URL, AUTH_TOKEN, MESSAGES_PER_PAGE } from "../constants";
+import type { ApiMessage } from "../types/chat.types";
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE_URL}${path}`, {

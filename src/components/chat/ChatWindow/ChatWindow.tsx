@@ -9,7 +9,7 @@ interface ChatWindowProps {
 }
 
 export function ChatWindow({ roomName = "Chat" }: ChatWindowProps) {
-  const { messages, isLoading, sendMessage } = useMessages();
+  const { messages, isLoading, sendMessage, isSending } = useMessages();
   const currentUser = useCurrentUser();
 
   if (!currentUser) return null;
@@ -24,7 +24,7 @@ export function ChatWindow({ roomName = "Chat" }: ChatWindowProps) {
         currentUser={currentUser}
         isLoading={isLoading}
       />
-      <MessageInput onSend={sendMessage} />
+      <MessageInput onSend={sendMessage} disabled={isSending} />
     </main>
   );
 }
