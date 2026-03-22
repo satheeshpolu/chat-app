@@ -21,9 +21,9 @@ export const MessageInput = memo(function MessageInput({
   };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && !e.shiftKey) {
+    if (e.key === "Enter") {
       e.preventDefault();
-      handleSend();
+      if (!e.shiftKey) handleSend();
     }
   };
 
