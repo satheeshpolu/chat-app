@@ -18,7 +18,7 @@ npm run dev
 - [Project Structure](#project-structure)
 - [Key Features](#key-features)
 - [Environment Variables](#environment-variables)
-- [Contributing](#contributing)
+- [Development](#development)
 
 ---
 
@@ -125,7 +125,7 @@ In production, inject secrets via CI/CD from a secrets manager (AWS SSM, HashiCo
 
 ---
 
-## Contributing
+## Development
 
 ```bash
 npm run dev      # Start development server
