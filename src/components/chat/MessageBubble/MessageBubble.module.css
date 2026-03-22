@@ -1,0 +1,73 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: min(65%, 420px);
+}
+
+.self {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+.other {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.bubble {
+  padding: 16px;
+  border-radius: 8px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bubbleOther {
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.bubbleSelf {
+  background: #fff9c4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.senderName {
+  font-size: 0.85rem;
+  color: #555; /* was #999 — #555 gives 7.46:1 on white, passes WCAG AA */
+}
+
+.content {
+  margin: 0;
+  font-size: 1rem;
+  /* font-weight: 600; */
+  line-height: 1.45;
+  color: #111;
+}
+
+.timestamp {
+  font-size: 0.85rem;
+  color: #666; /* was #999 — #666 gives 5.74:1 on white and 5.36:1 on yellow, passes WCAG AA */
+  align-self: flex-start;
+}
+
+.timestampSelf {
+  align-self: flex-end;
+  margin-right: -8px;
+  margin-bottom: -8px;
+}
+
+/* medium screens: allow bubbles to grow wider to reduce LHS whitespace */
+@media (max-width: 640px) {
+  .wrapper {
+    max-width: min(78%, 460px);
+  }
+}
+
+/* small screens: near full-width bubbles */
+@media (max-width: 480px) {
+  .wrapper {
+    max-width: 85%;
+  }
+}
