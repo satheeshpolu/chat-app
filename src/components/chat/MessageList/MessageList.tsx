@@ -9,12 +9,14 @@ interface MessageListProps {
   messages: Message[];
   currentUser: string;
   isLoading?: boolean;
+  isError?: boolean;
 }
 
 export function MessageList({
   messages,
   currentUser,
   isLoading = false,
+  isError = false,
 }: MessageListProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -46,6 +48,20 @@ export function MessageList({
     );
   }
 
+  if (isError && messages.length === 0) {
+    return (
+      <div
+        className={styles.list}
+        role="alert"
+        aria-label="Error loading messages"
+      >
+        <div className={styles.error}>
+          Could not load messages. Check your connection and try again.
+        </div>
+      </div>
+    );
+  }
+
   const items = virtualizer.getVirtualItems();
 
   return (
@@ -57,6 +73,11 @@ export function MessageList({
       aria-live="polite"
       aria-relevant="additions"
     >
+      {isError && (
+        <p className={styles.errorBanner} role="alert">
+          Failed to refresh messages.
+        </p>
+      )}
       {/* total height spacer — virtualizer positions items inside this */}
       <div
         className={styles.virtualSizer}

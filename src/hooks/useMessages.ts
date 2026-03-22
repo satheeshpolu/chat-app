@@ -18,7 +18,11 @@ export function useMessages() {
   // tracks the latest message timestamp so polls only fetch new messages
   const lastTimestampRef = useRef<string | undefined>(undefined);
 
-  const { data: messages = [], isLoading } = useQuery<Message[]>({
+  const {
+    data: messages = [],
+    isLoading,
+    isError,
+  } = useQuery<Message[]>({
     queryKey: MESSAGES_QUERY_KEY,
     queryFn: async (): Promise<Message[]> => {
       const msgs = await chatService.fetchMessages(
@@ -45,7 +49,11 @@ export function useMessages() {
     },
   });
 
-  const { mutateAsync: sendMessage, isPending: isSending } = useMutation({
+  const {
+    mutateAsync: sendMessage,
+    isPending: isSending,
+    error: sendError,
+  } = useMutation({
     mutationFn: async (content: string) => {
       if (!currentUser) throw new Error("No user");
       return chatService.sendMessage(content.trim(), currentUser);
@@ -59,5 +67,5 @@ export function useMessages() {
     },
   });
 
-  return { messages, isLoading, sendMessage, isSending };
+  return { messages, isLoading, isError, sendMessage, isSending, sendError };
 }

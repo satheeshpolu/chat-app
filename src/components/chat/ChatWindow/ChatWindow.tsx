@@ -9,7 +9,8 @@ interface ChatWindowProps {
 }
 
 export function ChatWindow({ roomName = "Chat" }: ChatWindowProps) {
-  const { messages, isLoading, sendMessage, isSending } = useMessages();
+  const { messages, isLoading, isError, sendMessage, isSending, sendError } =
+    useMessages();
   const currentUser = useCurrentUser();
 
   if (!currentUser) return null;
@@ -23,7 +24,13 @@ export function ChatWindow({ roomName = "Chat" }: ChatWindowProps) {
         messages={messages}
         currentUser={currentUser}
         isLoading={isLoading}
+        isError={isError}
       />
+      {sendError && (
+        <p className={styles.sendError} role="alert">
+          Failed to send message. Please try again.
+        </p>
+      )}
       <MessageInput onSend={sendMessage} disabled={isSending} />
     </main>
   );
