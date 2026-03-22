@@ -1,14 +1,15 @@
-import { create } from "zustand";
-
-interface ChatStore {
-  currentUser: string | null;
-  setCurrentUser: (name: string | null) => void;
+// Raw shape returned by the backend
+export interface ApiMessage {
+  _id: string;
+  message: string;
+  author: string;
+  createdAt: string;
 }
 
-export const useChatStore = create<ChatStore>((set) => ({
-  currentUser: null,
-  setCurrentUser: (name) => set({ currentUser: name }),
-}));
-
-export const useCurrentUser = () => useChatStore((s) => s.currentUser);
-export const useSetCurrentUser = () => useChatStore((s) => s.setCurrentUser);
+// Internal shape used by the UI
+export interface Message {
+  id: string;
+  author: string;
+  content: string;
+  timestamp: string; // ISO string
+}
