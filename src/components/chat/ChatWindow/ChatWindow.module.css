@@ -21,3 +21,13 @@
   font-weight: 600;
   color: #fff;
 }
+
+.sendError {
+  margin: 0;
+  padding: 6px 16px;
+  background: #ffebee;
+  color: #c62828;
+  font-size: 0.8rem;
+  text-align: center;
+  flex-shrink: 0;
+}
