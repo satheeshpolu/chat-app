@@ -2,6 +2,10 @@
 
 A real-time group chat interface built with React and TypeScript. Enter your name, send messages, and see everyone's updates automatically and no page refresh needed.
 
+## 🔗 Live Demo
+
+![Demo](/src/assets/chat-demo.gif)
+
 ## Installation
 
 ```bash
